@@ -2,6 +2,11 @@
 
 namespace Meltwin\Hestia\Base;
 
+/**
+ * Enum for link type
+ * @author Meltwin
+ * @since 1.0.0
+ */
 abstract class LinkType {
 
     public const STYLE = new LinkType();
@@ -10,6 +15,11 @@ abstract class LinkType {
     private function __construct() {}
 }
 
+/**
+ * Abstract class for building differents pages
+ * @author Meltwin
+ * @since 1.0.0
+ */
 abstract class BasePage {
     
 
@@ -23,8 +33,9 @@ abstract class BasePage {
     
     protected function __construct() {}
 
-    /*
-     *          SETTER LINK 
+    /* =========================================
+     *                SETTER LINK 
+     * =========================================
      */
     private function add_array(array $arr, $link) : void {
         array_push($arr, $link);
