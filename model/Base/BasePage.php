@@ -17,6 +17,8 @@ abstract class BasePage {
     private array $pre_scripts = [], $post_scripts = [];
 
     private ?string $footer_link = null;
+
+    private string $page_title = "No Title";
     
     
     protected function __construct() {}
@@ -37,15 +39,24 @@ abstract class BasePage {
         $this->add_array($this->post_scripts, $link);
     }
 
-    private function set_footer(string $link) {
+    protected function set_footer(string $link) : void {
         $this->footer_link = $link;
     }
+    protected function set_title(string $title) : void {
+        $this->page_title = $title;
+    }
+
+
+    /*
+     *          GETTER 
+     */
+    public function get_title() : string {return $this->page_title;}
 
     /*
     *           VIEW CONSTRUCTOR
     */
     private function construct_link(array $link_array, LinkType $type) : void {
-        $view = ($type === LinkType::STYLE) ? "./view/link/css.php" : "./view/link/script.php";
+        $view = ($type === LinkType::STYLE) ? "./view/global/header/link/css.php" : "./view/global/header/link/script.php";
 
         foreach ($link_array as $link) {
             require($view);
