@@ -1,9 +1,7 @@
 <?php
-
-require_once("./model/base/BasePage.php");
-
 namespace Meltwin\Hestia\Page;
 
+require_once("./model/base/BasePage.php");
 use Meltwin\Hestia\Base\BasePage;
 
 /**

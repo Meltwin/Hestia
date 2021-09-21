@@ -9,8 +9,8 @@ namespace Meltwin\Hestia\Base;
  */
 abstract class LinkType {
 
-    public const STYLE = new LinkType();
-    public const SCRIPT = new LinkType();
+    public static $STYLE = 0;
+    public static $SCRIPT = 1;
 
     private function __construct() {}
 }
@@ -66,8 +66,8 @@ abstract class BasePage {
     /*
     *           VIEW CONSTRUCTOR
     */
-    private function construct_link(array $link_array, LinkType $type) : void {
-        $view = ($type === LinkType::STYLE) ? "./view/global/header/link/css.php" : "./view/global/header/link/script.php";
+    private function construct_link(array $link_array, int $type) : void {
+        $view = ($type === LinkType::$STYLE) ? "./view/global/header/link/css.php" : "./view/global/header/link/script.php";
 
         foreach ($link_array as $link) {
             require($view);
@@ -75,12 +75,12 @@ abstract class BasePage {
     }
 
     public function construct_header() {
-        $this->construct_link($this->style, LinkType::STYLE);
-        $this->construct_link($this->pre_scripts, LinkType::SCRIPT);
+        $this->construct_link($this->style, LinkType::$STYLE);
+        $this->construct_link($this->pre_scripts, LinkType::$SCRIPT);
     }
     public abstract function construct_page();
     public function construct_footer() {
-        $this->construct_link($this->post_scripts, LinkType::SCRIPT);
+        $this->construct_link($this->post_scripts, LinkType::$SCRIPT);
         if (!is_null($this->footer_link)) {
             require($this->footer_link);
         }

@@ -1,7 +1,6 @@
 <?php
     require_once("./controller/pages.php");
 
-
     // Page Routing
     if (!isset($_GET["p"])) {
         index();

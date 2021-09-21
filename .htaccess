@@ -1,5 +1,7 @@
-deny from all 
-
-<File "./index.php">
+deny from all
+<Files "./index.php">
     allow from all
-</File>
+</Files>
+<Files "./">
+    allow from all
+</Files>
